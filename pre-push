@@ -63,6 +63,7 @@ do
 	if [ -f $s3configFile ]; then
 		OIFS=$IFS;
 		IFS="=";
+		branch=$(git symbolic-ref --short HEAD)
 		while read -r line
 		do
 			if [ -n "$line" ]; then
@@ -74,11 +75,6 @@ do
 					if [[ ${lineArray[0]} = "bucket" ]]; then
 						bucket=${lineArray[1]}
 						# echo -e "bucket: ${BLUE} $bucket ${NC}"
-					fi
-
-					if [[ ${lineArray[0]} = "branch" ]]; then
-						branch=${lineArray[1]}
-						# echo -e "branch: ${BLUE} $branch ${NC}"
 					fi
 
 					# for ((i=0; i<${#lineArray[@]}; ++i)); do
@@ -93,9 +89,7 @@ do
 		echo -e "branch: ${BLUE} $branch ${NC}"
 		s3upload=false
 		if [ "$bucket" ]; then
-			if [ "$branch" ]; then
-				s3upload=true
-			fi
+			s3upload=true
 		fi
 	else
 		echo -e >&2 "File .s3config does not exist in you repository and is necesary to push to your s3 repo."
@@ -124,10 +118,10 @@ do
 		fi
 
 		if [ "$s3upload" ]; then
-			# echo $branch
+			
 			# Check for commits files
-			# files2Push=$("git diff --name-only origin/${branch}..HEAD")
-			files2Push=`git diff --name-only origin/develop..HEAD`
+			files2Push="$(git diff --name-only origin/${branch}..HEAD)"
+			# files2Push=`git diff --name-only origin/develop..HEAD`
 			echo "git diff --name-only origin/${branch}..HEAD"
 
 			if [ -n "$files2Push" ]
@@ -149,4 +143,3 @@ do
 done
 
 exit 0
-
