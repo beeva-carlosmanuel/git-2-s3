@@ -5,6 +5,11 @@ Integración contínua para desplegar en S3 a través del hook "pre-push" de Git
 En ServerNull únicamente usamos ficheros estáticos: HTML, JS y CSS, que pueden ir directamente al servidor estático (S3). Por lo tanto, es posible desplegar directamente en S3 cada vez que se suben los archivos a github. 
 
 Cuando se ejecuta el git push, antes de realizar ninguna acción se lanza el hook "pre-push", que recopila todos los ficheros que se van a subir a git y los copia en el bucket de S3 que se indique en la configuración previamente.
+
+## Recursos
+
+ - [Documentación sobre Hooks de Git](https://git-scm.com/book/es/v2/Personalizaci%C3%B3n-de-Git-Puntos-de-enganche-en-Git)
+
 ## Requisitos
 Para poder realizar este proceso es necesario:
  - **Git** ( sudo apt-get install git )
