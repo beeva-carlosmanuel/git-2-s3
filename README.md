@@ -27,7 +27,7 @@ Para poder realizar este proceso debemos:
 	 - branch=develop
 
 ## Procedimiento
-Una vez con todo instalado iniciaremos el proceso habitual de desarrollo del proyecto. Se recomienda el uso de la herramienta git-flow para mantener un orden en el versionado. 
+Una vez con todo instalado iniciaremos el **proceso habitual de desarrollo del proyecto usando git**. Se recomienda el uso de **git-flow** para mantener un orden en el versionado. 
 
 En el momento en que se realice el **push a develop** se pondrá en marcha el hook pre-push de forma automática.
 
@@ -39,7 +39,5 @@ En caso de error, siempre tenemos git para recuperar una versión anterior del a
 ## Desinstalación
 Para dejar de usar este hook, basta con renombrar el fichero **pre-push**, llamándolo por ejemplo pre-push.txt
 
-by CMD (Carlos Manuel Díaz) - carlos.manuel@beeva.com
-
-> Written with [StackEdit](https://stackedit.io/).
-
+## Recursos utilizados para desarrollo y pruebas
+Para realizar este hook hemos usado el bucket [git-2-s3](https://github.com/beeva-carlosmanuel/git-2-s3) y el bucket [git-2-s3](https://s3.console.aws.amazon.com/s3/buckets/git-2-s3/?region=eu-west-1&tab=overview).
