@@ -1,3 +1,4 @@
+#!/bin/bash
 clear
 line=1
 git diff --name-only origin/develop..HEAD
